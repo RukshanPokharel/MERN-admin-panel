@@ -84,7 +84,7 @@ const Blog = ({
 
     return (
 
-        <div className=''>
+        <div className='' style={{paddingBottom:30}}>
             <Container>
                 <Card>
                     <CardMedia

@@ -335,7 +335,8 @@ function Home() {
                                         <Row>
                                             <Col sm={12} md={4} lg={4} xl={4}>
                                                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style={{visibility: 'visible', animationDelay: `0.2s`, animatioName: fadeInUp}}>
-                                                    <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""/>
+                                                    <div class="advisor_thumb"><img src={require('../img/free.jpg')} alt=""/>
+                                                    
                                                         <div class="social-info"><a href="/"><FaFacebook size={20}/></a><a href="/"><FaTwitter size={20}/></a><a href="/"><FaLinkedin size={20}/></a></div>
                                                     </div>
                                                     <div class="single_advisor_details_info">
