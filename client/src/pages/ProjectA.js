@@ -97,7 +97,7 @@ function Projects() {
                                 <h3>PROJEKT DATA</h3>
                                 <div className="px-4">
                                     <div class="profile">
-                                        <Image roundedCircle className="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" style={{height:150, maxHeight:150}}/>
+                                        <Image roundedCircle className="img-fluid" src={require('../img/academic.jpg')} alt="bg" style={{height:150, maxHeight:150}}/>
                                     </div>
                                     <div className="profile-avatar-info mt-4">
                                         <h4 className="">PROJEKT LEDER</h4>

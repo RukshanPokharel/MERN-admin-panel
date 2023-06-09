@@ -48,7 +48,9 @@ const Scientist = () => {
                             animate={control}
                     >
                     <Card className="card-custom bg-white border-white border-0 shadow-lg" style={{borderRadius:20, height:550}} border="info mx-2">
-                        <div className="card-custom-img" style={{backgroundImage:`url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg)`}}></div>
+                        <div className="card-custom-img">
+                            <Image src={require('../../img/scientistbg.jpg')} alt="bg"/> 
+                        </div>
                         <div class="card-custom-avatar">
                             <Image className="img-fluid" src={require('../../img/academic.jpg')} alt="Avatar"/>
                         </div>
@@ -83,7 +85,9 @@ const Scientist = () => {
                             animate={control}
                     >
                     <Card className="card-custom bg-white border-white border-0 shadow-lg" style={{borderRadius:20, height:550}} border="info mx-2">
-                        <div className="card-custom-img" style={{backgroundImage:`url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg)`}}></div>
+                        <div className="card-custom-img">
+                            <Image src={require('../../img/scientistbg.jpg')} alt="bg"/> 
+                        </div>
                         <div class="card-custom-avatar">
                             <Image className="img-fluid" src={require('../../img/academic.jpg')} alt="Avatar"/>
                         </div>
@@ -118,7 +122,9 @@ const Scientist = () => {
                             animate={control}
                     >
                     <Card className="card-custom bg-white border-white border-0 shadow-lg" style={{borderRadius:20, height:550}} border="info mx-2">
-                        <div className="card-custom-img" style={{backgroundImage:`url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg)`}}></div>
+                        <div className="card-custom-img">
+                            <Image src={require('../../img/scientistbg.jpg')} alt="bg"/> 
+                        </div>
                         <div class="card-custom-avatar">
                             <Image className="img-fluid" src={require('../../img/academic.jpg')} alt="Avatar"/>
                         </div>
