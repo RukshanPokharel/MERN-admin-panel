@@ -9,6 +9,9 @@ node_modules
 # testing
 /coverage
 
+# video
+*.mp4
+
 # production
 /build
 
