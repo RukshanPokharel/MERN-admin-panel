@@ -1,5 +1,5 @@
 import React from "react";
-import { Ratio } from 'react-bootstrap';
+// import { Ratio } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import myVideo from './MegaGrant.mp4';
 
@@ -8,7 +8,7 @@ import '../../styles/Home.css';
 
 //controls width="100%"
 
-const src = "https://nanoscalesimulations.com/Gallery/BIG-MAP%20demo%201.1.mov";
+// const src = "https://nanoscalesimulations.com/Gallery/BIG-MAP%20demo%201.1.mov";
 
 // const yt = "https://www.youtube.com/embed/Yo3AcnSr6_g";
 
