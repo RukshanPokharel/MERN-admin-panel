@@ -47,7 +47,8 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             "media-src": ["'self'", "https://nanoscalesimulations.com"],
-            // connectSrc: ["'self'", 'http://127.0.0.1:8000', 'ws://localhost:42877/']
+            // "script-src": ["'self'"],
+            // "script-src-elem": ["'self'"]
         }
     }
 }));
