@@ -10,25 +10,25 @@ import axios from 'axios';
 const BlogsContainer = (props) => {
     const {
         getBlogs,
-        blogs,
+        // blogs,
         isLoading,
         page,
-        totalBlogs,
+        // totalBlogs,
         search,
         searchStatus,
         searchType,
         sort,
-        numOfPages,
+        // numOfPages,
         showAlert,
+
     } = useAppContext();
 
     const [blogss, setBlogss] = useState([]);
     const [totalBlogss, setTotalBlogss] = useState(0);
     const [numOfPagess, setNumOfPagess] = useState(0);
 
-
     useEffect(() => {
-        // getBlogs(props.isBlogPage);
+        getBlogs(props.isBlogPage);
         getBlogsApi(props.isBlogPage);
         // eslint-disable-next-line
     }, [page, search, searchStatus, searchType, sort, props.isBlogPage]);
@@ -76,7 +76,6 @@ const BlogsContainer = (props) => {
             setBlogss(blogs);
             setTotalBlogss(totalBlogs);
             setNumOfPagess(numOfPages);
-
             // dispatch({
             //     type: GET_BLOGS_SUCCESS,
             //     payload: {
