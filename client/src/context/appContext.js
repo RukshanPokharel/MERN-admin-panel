@@ -32,6 +32,7 @@ const initialState = {
 
     // blog properties
     blogs: [],
+    // clientBlogs: [],
     totalBlogs: 0,
     title: '',
     subtitle: '',
@@ -167,7 +168,7 @@ const AppProvider = ({ children }) => {
         dispatch({ type: CLEAR_VALUES })
     }
 
-    
+
     // Show all stats from the 3 different status
     const showStats = async () => {
         dispatch({ type: SHOW_STATS_BEGIN })
@@ -181,7 +182,7 @@ const AppProvider = ({ children }) => {
                 },
             })
         } catch (error) {
-        console.log(error.response)
+            console.log(error.response)
             logoutUser()
         }
 
@@ -219,13 +220,18 @@ const AppProvider = ({ children }) => {
     };
 
     const getBlogs = async (isBlogPage) => {
-        const { page, search, searchStatus, searchType, sort } = state;
+        // const { page, search, searchStatus, searchType, sort } = state;
+        const { search } = state;
         let url = '';
         if (isBlogPage) {
-            url = `/landing-blog?page=${page}&status=${searchStatus}&blogType=${searchType}&sort=${sort}&isLanding=${isBlogPage}`;
+            // url = `/landing-blog?page=${page}&status=${searchStatus}&blogType=${searchType}&sort=${sort}&isLanding=${isBlogPage}`;
+            url = `/landing-blog?isLanding=${isBlogPage}`;
+
         }
         else {
-            url = `/blog?page=${page}&status=${searchStatus}&blogType=${searchType}&sort=${sort}&isLanding=${isBlogPage}`;
+            // url = `/blog?page=${page}&status=${searchStatus}&blogType=${searchType}&sort=${sort}&isLanding=${isBlogPage}`;
+            url = `/blog?isLanding=${isBlogPage}`;
+
         }
         if (search) {
             url = url + `&search=${search}`;
@@ -245,8 +251,40 @@ const AppProvider = ({ children }) => {
         } catch (error) {
             logoutUser();
         }
+        // }
+
         clearAlert();
     };
+
+    // const getClientBlogs = async (isBlogPage) => {
+    //     // const { page, search, searchStatus, searchType, sort } = state;
+    //     const { search } = state;
+
+    //     let url = '';
+    //     // url = `/landing-blog?page=${page}&status=${searchStatus}&blogType=${searchType}&sort=${sort}&isLanding=${isBlogPage}`;
+    //     url = `/landing-blog?isLanding=${isBlogPage}`;
+
+    //     if (search) {
+    //         url = url + `&search=${search}`;
+    //     }
+    //     dispatch({ type: GET_CLIENT_BLOGS_BEGIN });
+    //     try {
+    //         const { data } = await authFetch.get(url);
+    //         const { clientBlogs, totalBlogs, numOfPages } = data;
+    //         dispatch({
+    //             type: GET_CLIENT_BLOGS_SUCCESS,
+    //             payload: {
+    //                 clientBlogs,
+    //                 totalBlogs,
+    //                 numOfPages,
+    //             },
+    //         });
+    //     } catch (error) {
+    //         logoutUser();
+    //     }
+
+    //     clearAlert();
+    // };
 
     const setEditBlog = (id) => {
         dispatch({ type: SET_EDIT_BLOG, payload: { id } });
@@ -271,6 +309,7 @@ const AppProvider = ({ children }) => {
                 readmore,
                 fulltext
             });
+            getBlogs();
             dispatch({ type: EDIT_BLOG_SUCCESS });
             dispatch({ type: CLEAR_BLOG_VALUES });
         } catch (error) {
@@ -346,6 +385,7 @@ const AppProvider = ({ children }) => {
                 clearBlogValues,
                 createBlog,
                 getBlogs,
+                // getClientBlogs,
                 setEditBlog,
                 deleteBlog,
                 editBlog,

@@ -26,7 +26,7 @@ import {
     EDIT_JOB_SUCCESS,
     EDIT_JOB_ERROR,
     CREATE_BLOG_BEGIN, CREATE_BLOG_SUCCESS, CREATE_BLOG_ERROR, GET_BLOGS_BEGIN, GET_BLOGS_SUCCESS, SET_EDIT_BLOG, DELETE_BLOG_BEGIN, DELETE_BLOG_ERROR, EDIT_BLOG_BEGIN, EDIT_BLOG_SUCCESS, EDIT_BLOG_ERROR,
-    SHOW_STATS_BEGIN, SHOW_STATS_SUCCESS, CLEAR_FILTERS, CHANGE_PAGE, GET_CURRENT_USER_BEGIN, GET_CURRENT_USER_SUCCESS
+    SHOW_STATS_BEGIN, SHOW_STATS_SUCCESS, CLEAR_FILTERS, CHANGE_PAGE, GET_CURRENT_USER_BEGIN, GET_CURRENT_USER_SUCCESS, GET_CLIENT_BLOGS_BEGIN, GET_CLIENT_BLOGS_SUCCESS
 } from "./actions";
 import { initialState } from "./appContext";
 
@@ -358,6 +358,21 @@ const reducer = (state, action) => {
             numOfPages: action.payload.numOfPages,
         };
     }
+
+    if (action.type === GET_CLIENT_BLOGS_BEGIN) {
+        return { ...state, isLoading: true, showAlert: false };
+    }
+
+    if (action.type === GET_CLIENT_BLOGS_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            clientBlogs: action.payload.clientBlogs,
+            totalBlogs: action.payload.totalBlogs,
+            numOfPages: action.payload.numOfPages,
+        };
+    }
+
 
     if (action.type === SET_EDIT_BLOG) {
         const blog = state.blogs.find((blog) => blog._id === action.payload.id);

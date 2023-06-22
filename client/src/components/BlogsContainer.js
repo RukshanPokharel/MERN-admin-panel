@@ -21,21 +21,31 @@ const BlogsContainer = (props) => {
         showAlert,
     } = useAppContext();
 
+    // useEffect(() => {
+    //     async function getApiBlog(flag) {
+    //         const blogResponse = await getBlogs(flag);
+    //         console.log('HENNING', blogResponse);
+    //         return blogResponse
+    //     }
+    //     getApiBlog(props.isBlogPage);
+    // }, [props.isBlogPage])
+
     useEffect(() => {
         getBlogs(props.isBlogPage);
 
         return () => {
-            getBlogs(props.isBlogPage);
+            const blogResponse = getBlogs(props.isBlogPage);
+            console.log('HENNING', blogResponse);
         }
 
-        // eslint-disable-next-line
-    }, [page, search, searchStatus, searchType, sort])
+    }, [props.isBlogPage])
+
 
     if (isLoading) {
         return <Loading center />;
     }
 
-    if (blogs.length === 0) {
+    if (!blogs || blogs.length === 0) {
         return (
             <Wrapper>
                 <h2>No blogs to display...</h2>
@@ -47,7 +57,10 @@ const BlogsContainer = (props) => {
         <Wrapper>
             {showAlert && <Alert />}
             <h5>
+                {/* {totalBlogs} blog{blogs.length > 1 && 's'} found */}
+
                 {totalBlogs} blog{blogs.length > 1 && 's'} found
+
             </h5>
             <div className='jobs'>
                 {blogs.map((blog) => {
