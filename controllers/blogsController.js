@@ -32,7 +32,7 @@ const createBlog = async (req, res) => {
 };
 
 const getAllBlogs = async (req, res) => {
-    const { status, sort, search, isLanding } = req.query;
+    const { isLanding } = req.query;
 
     try {
         let queryObject = {

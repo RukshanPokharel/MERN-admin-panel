@@ -21,6 +21,22 @@ const BlogsContainer = (props) => {
         showAlert,
     } = useAppContext();
 
+    useEffect(() => {
+        getBlogs(props.isBlogPage);
+        // eslint-disable-next-line
+    }, [page, search, searchStatus, searchType, sort]);
+
+    // useEffect(() => {
+    //     getBlogs(props.isBlogPage);
+
+    //     return () => {
+    //         const blogResponse = getBlogs(props.isBlogPage);
+    //         console.log('HENNING', blogResponse);
+    //     }
+    //     // eslint-disable-next-line
+    // }, [props.isBlogPage])
+
+
     // useEffect(() => {
     //     async function getApiBlog(flag) {
     //         const blogResponse = await getBlogs(flag);
@@ -29,16 +45,6 @@ const BlogsContainer = (props) => {
     //     }
     //     getApiBlog(props.isBlogPage);
     // }, [props.isBlogPage])
-
-    useEffect(() => {
-        getBlogs(props.isBlogPage);
-
-        return () => {
-            const blogResponse = getBlogs(props.isBlogPage);
-            console.log('HENNING', blogResponse);
-        }
-
-    }, [props.isBlogPage])
 
 
     if (isLoading) {
