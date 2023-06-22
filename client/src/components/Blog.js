@@ -40,8 +40,8 @@ const ExpandMore = styled((props) => {
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-}),
+        duration: theme.transitions.duration.shortest,
+    }),
 }));
 
 
@@ -60,12 +60,12 @@ const Blog = ({
 }) => {
 
     const style = {
-        marginTop:'5%',
+        marginTop: '5%',
     };
-    
+
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
-    setExpanded(!expanded);
+        setExpanded(!expanded);
     };
 
     const [open, setOpen] = React.useState(false);
@@ -80,28 +80,34 @@ const Blog = ({
 
     let date = moment(createdAt)
     date = date.format('MMM Do, YYYY');
-    const blogImageName = blogImage?.substring(33);
+    // const blogImageName = blogImage?.substring(33);
+
+    // Get the index of the last occurrence of 'blogImages/' in the URL
+    const lastIndex = blogImage?.lastIndexOf('blogImages/');
+
+    // Extract the image name from the URL using substring
+    const blogImageName = blogImage?.substring(lastIndex + 11);
 
     return (
 
-        <div className='' style={{paddingBottom:30}}>
+        <div className='' style={{ paddingBottom: 30 }}>
             <Container>
                 <Card>
                     <CardMedia
-                    component="img"
-                    style={{height:'220px'}}
-                    src={"../../blogImages/" + blogImageName}
-                    alt="Paella dish"
+                        component="img"
+                        style={{ height: '220px' }}
+                        src={"../../blogImages/" + blogImageName}
+                        alt="Paella dish"
                     />
                     <main>
                         <CardHeader
                             avatar={
-                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                {author.charAt(0)}
-                            </Avatar>
+                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                    {author.charAt(0)}
+                                </Avatar>
                             }
                             title={
-                                <Typography sx={{ color:'#3C9FE1' }}>
+                                <Typography sx={{ color: '#3C9FE1' }}>
                                     <div className='blog-card-titel'>
                                         <h5>{title}</h5>
                                         <h6>{subtitle}</h6>
@@ -109,35 +115,35 @@ const Blog = ({
                                 </Typography>
                             }
                         />
-                        
+
                         <CardContent>
-                            <Typography sx={{ fontSize: 16}} variant="body2" color="text.secondary">
-                            <div className='blog-p'>
-                                {description}
-                            </div>
+                            <Typography sx={{ fontSize: 16 }} variant="body2" color="text.secondary">
+                                <div className='blog-p'>
+                                    {description}
+                                </div>
                             </Typography>
-                            <Box sx={{ m: 2 , pt:1}}>
+                            <Box sx={{ m: 2, pt: 1 }}>
                                 <Stack direction="row" spacing={1}>
-                                <Chip  label="VR" />
-                                <Chip color="primary" label="Kemi" />
-                                <Chip label="AR" />
-                                <Chip color="primary" label="Tech" />
+                                    <Chip label="VR" />
+                                    <Chip color="primary" label="Kemi" />
+                                    <Chip label="AR" />
+                                    <Chip color="primary" label="Tech" />
                                 </Stack>
                             </Box>
                             <hr></hr>
-                            <Typography sx={{ fontSize: 14, color:'#3C9FE1' }}>
+                            <Typography sx={{ fontSize: 14, color: '#3C9FE1' }}>
                                 <div className='blog-dato'>
                                     <p>{date}</p>
                                     <p>{author}</p>
                                 </div>
-                            
+
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
                             <IconButton aria-label="add to favorites">
                             </IconButton>
-                            <Lndmode/>
-                            <FullscreenIcon  onClick={handleOpen} color="primary" sx={{fontSize:40}} />
+                            <Lndmode />
+                            <FullscreenIcon onClick={handleOpen} color="primary" sx={{ fontSize: 40 }} />
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -147,71 +153,71 @@ const Blog = ({
                             >
                                 <Box sx={style}>
                                     <Paper
-                                    sx={{
-                                        p: 2,
-                                        margin: 'auto',
-                                        flexGrow: 1,
-                                        backgroundColor: (theme) =>
-                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                    }}
+                                        sx={{
+                                            p: 2,
+                                            margin: 'auto',
+                                            flexGrow: 1,
+                                            backgroundColor: (theme) =>
+                                                theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                                        }}
                                     >
-                                    <Grid container spacing={2}>
-                                        <Grid item>
-                                        <ButtonBase sx={{ width: 400, height: 400, maxWidth: 400, maxheight: 400 }}>
-                                            <Img  src={"../../blogImages/" + blogImageName} alt="Paella dish" />
-                                        </ButtonBase>
-                                        </Grid>
-                                        <Grid item xs={12} sm container>
-                                        <Grid item xs container direction="column" spacing={2}>
-                                            <Grid item xs>
-                                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                                {author.charAt(0)}
-                                            </Avatar>
-                                            <hr></hr>
-                                            <Typography gutterBottom variant="subtitle1" component="div">
-                                                <h2>{title}</h2>
-                                            </Typography>
-                                            <Typography variant="body2" gutterBottom>
-                                                <h4>{subtitle}</h4>
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                {fulltext}
-                                            </Typography>
-                                            </Grid>
+                                        <Grid container spacing={2}>
                                             <Grid item>
-                                            <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                                                <p>{author}</p>
-                                                <p>{date}</p>
-                                            </Typography>
+                                                <ButtonBase sx={{ width: 400, height: 400, maxWidth: 400, maxheight: 400 }}>
+                                                    <Img src={"../../blogImages/" + blogImageName} alt="Paella dish" />
+                                                </ButtonBase>
+                                            </Grid>
+                                            <Grid item xs={12} sm container>
+                                                <Grid item xs container direction="column" spacing={2}>
+                                                    <Grid item xs>
+                                                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                            {author.charAt(0)}
+                                                        </Avatar>
+                                                        <hr></hr>
+                                                        <Typography gutterBottom variant="subtitle1" component="div">
+                                                            <h2>{title}</h2>
+                                                        </Typography>
+                                                        <Typography variant="body2" gutterBottom>
+                                                            <h4>{subtitle}</h4>
+                                                        </Typography>
+                                                        <Typography variant="body2" color="text.secondary">
+                                                            {fulltext}
+                                                        </Typography>
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <Typography sx={{ cursor: 'pointer' }} variant="body2">
+                                                            <p>{author}</p>
+                                                            <p>{date}</p>
+                                                        </Typography>
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
                                         </Grid>
-                                        </Grid>
-                                    </Grid>
                                     </Paper>
                                 </Box>
                             </Modal>
                             <ExpandMore
-                            expand={expanded}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                            className='blog-expand'
+                                expand={expanded}
+                                onClick={handleExpandClick}
+                                aria-expanded={expanded}
+                                aria-label="show more"
+                                className='blog-expand'
                             >
-                            <ExpandMoreIcon />
+                                <ExpandMoreIcon />
                             </ExpandMore>
                         </CardActions>
                         <Collapse in={expanded} timeout="auto" unmountOnExit>
                             <CardContent>
-                            <Typography paragraph>
-                                <div className='blog-mellemtitel'>
-                                    <p>Metode:</p>
-                                </div>
-                            </Typography>
-                            <Typography paragraph>
-                                <div className='blog-p'>
-                                    {readmore}
-                                </div>
-                            </Typography>
+                                <Typography paragraph>
+                                    <div className='blog-mellemtitel'>
+                                        <p>Metode:</p>
+                                    </div>
+                                </Typography>
+                                <Typography paragraph>
+                                    <div className='blog-p'>
+                                        {readmore}
+                                    </div>
+                                </Typography>
                             </CardContent>
                         </Collapse>
                     </main>
@@ -240,7 +246,7 @@ const Blog = ({
             </Container>
             <div className='content'>
                 <div className='content-center'>
-                    {/*<BlogInfo icon={<FaBriefcase />} text={fulltext} /> */ }
+                    {/*<BlogInfo icon={<FaBriefcase />} text={fulltext} /> */}
                 </div>
             </div>
         </div>
